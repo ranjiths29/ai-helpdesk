@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Helpdesk</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background: #f0f4f8; color: #222; }
+    nav {
+      background: #1B4F8A; color: white; padding: 14px 32px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    nav a { color: white; text-decoration: none; font-weight: 600; font-size: 18px; }
+    nav .nav-links a { margin-left: 20px; font-size: 14px; font-weight: 400; }
+    .container { max-width: 960px; margin: 40px auto; padding: 0 20px; }
+    .card {
+      background: white; border-radius: 12px;
+      padding: 32px; box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    .btn {
+      background: #1B4F8A; color: white; border: none;
+      padding: 10px 24px; border-radius: 8px; cursor: pointer;
+      font-size: 14px; font-weight: 600; text-decoration: none;
+      display: inline-block;
+    }
+    .btn:hover { background: #153d6e; }
+    .btn-green { background: #1a7a4a; }
+    .btn-green:hover { background: #145c37; }
+    .badge {
+      padding: 3px 10px; border-radius: 20px; font-size: 12px;
+      font-weight: 600; display: inline-block;
+    }
+    .badge-P1 { background: #fde8e8; color: #c0392b; }
+    .badge-P2 { background: #fef3cd; color: #9a6c00; }
+    .badge-P3 { background: #e8f5e9; color: #276221; }
+    .badge-open { background: #e8f0fe; color: #1B4F8A; }
+    .badge-in_progress { background: #fff3e0; color: #e65100; }
+    .badge-resolved { background: #e8f5e9; color: #276221; }
+    .msg-success { background: #e8f5e9; color: #276221; padding: 12px; border-radius: 8px; margin-bottom: 16px; }
+    .msg-error { background: #fde8e8; color: #c0392b; padding: 12px; border-radius: 8px; margin-bottom: 16px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/dashboard/">🎫 AI Helpdesk</a>
+    <div class="nav-links">
+      {% if user.is_authenticated %}
+        <a href="/dashboard/">Dashboard</a>
+        <a href="/submit/">New Ticket</a>
+        <a href="/logout/">Logout ({{ user.username }})</a>
+      {% else %}
+        <a href="/login/">Login</a>
+      {% endif %}
+    </div>
+  </nav>
+  <div class="container">
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>

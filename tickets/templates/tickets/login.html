@@ -1,0 +1,25 @@
+{% extends 'tickets/base.html' %}
+{% block content %}
+<div style="max-width:400px; margin: 60px auto;">
+  <div class="card">
+    <h2 style="margin-bottom:24px; color:#1B4F8A;">Login to AI Helpdesk</h2>
+    {% if error %}
+      <div class="msg-error">{{ error }}</div>
+    {% endif %}
+    <form method="POST">
+      {% csrf_token %}
+      <div style="margin-bottom:16px;">
+        <label style="display:block; margin-bottom:6px; font-weight:600;">Username</label>
+        <input type="text" name="username" required
+          style="width:100%; padding:10px; border:1px solid #ddd; border-radius:8px; font-size:14px;">
+      </div>
+      <div style="margin-bottom:24px;">
+        <label style="display:block; margin-bottom:6px; font-weight:600;">Password</label>
+        <input type="password" name="password" required
+          style="width:100%; padding:10px; border:1px solid #ddd; border-radius:8px; font-size:14px;">
+      </div>
+      <button type="submit" class="btn" style="width:100%;">Login</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

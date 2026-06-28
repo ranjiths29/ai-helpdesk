@@ -1,0 +1,13 @@
+python -c "
+import json
+config = {
+  'build': {'builder': 'NIXPACKS'},
+  'deploy': {
+    'startCommand': 'gunicorn helpdesk.wsgi --log-file -',
+    'restartPolicyType': 'ON_FAILURE'
+  }
+}
+with open('railway.json', 'w') as f:
+    json.dump(config, f, indent=2)
+print('Done')
+"
